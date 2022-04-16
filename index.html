@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Corrected Musk</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link href="https://unpkg.com/tabulator-tables@5.0.10/dist/css/tabulator.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spin.js/4.1.1/spin.min.css" integrity="sha512-ssYEuK9Epo/48VIlBWTFosf1izrgGZqEMELJP+L7Clh0nvaOSTg87dM+Z8L+KKjrPdMbMvKYOOnzBOkNMhWFsg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+  <section class="section">
+    <div class="container has-text-centered">
+      <h1 class="title">Corrected</h1>
+      <h2 class="subtitle">The <span class="name-first"></span> <span class="name-last"></span> Forecast Correction Function</h2>
+    </div>
+    <div class="box has-text-centered" id="calculator">
+      <p id="predicted-on-line">
+        When did <span class="name-first"></span> <span class="name-last"></span> make this prediction? <br>
+        <input type="date" id="predicted-on-date">
+      </p><br>
+      <p id="predicted-by-line">
+        What date did <span class="pronoun-nomnitive"></span> predict it would happen by? <br>
+        <input type="date" id="predicted-by-date">
+      </p><br>
+      <p id="corrected-line">
+        It will probably happen much closer to <br>
+        <input type="date" id="corrected-date" readonly></span>
+      </p><br>
+      <p id="how-line">
+        <a href="#how" id="how-button">How do we know?</a>
+      </p>
+    </div>
+  </section>
+  <section class="section is-hidden" id="how">
+    <div class="tabs is-centered">
+      <ul>
+        <li class="is-active"><a>Raw Data</a></li>
+        <li><a>Model</a></li>
+        <li><a>Videos</a></li>
+        <li><a>Documents</a></li>
+      </ul>
+    </div>
+    <div class="container is-hidden" id="table-wrapper">
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">From</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <input class="input" type="text" placeholder="Name">
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control is-expanded has-icons-left has-icons-right">
+              <input class="input is-success" type="email" placeholder="Email" value="alex@smith.com">
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="table"></div>
+    </div>
+    <div class="columns is-hidden" id="scatterplot-wrapper">
+      <div class="column is-one-fifth"></div>
+      <div id="scatterplot" class="column"></div>
+      <div class="column is-one-fifth"></div>
+    </div>
+  </section>
+  <section class="has-text-centered">
+    <div class="control">
+      <a class="button is-primary" href="#">View the Raw Data</a>
+      <a class="button is-primary" href="#">Download the Raw Data</a>
+      <a class="button is-primary" href="#">Suggest a Musk Forecast</a>
+    </div>
+
+    Built by Tony Boyles &lt;@aaboyles&gt;. Made possible by a microgrant from the <a href="https://forecasting.substack.com/">Forecasting Newsletter</a>.
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/regression/2.0.1/regression.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.0.10/dist/js/tabulator.min.js"></script>
+  <script src="https://unpkg.com/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+  <script src="js/app.js" type="module"></script>
+  </body>
+</html>

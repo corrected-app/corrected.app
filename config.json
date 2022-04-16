@@ -1,0 +1,12 @@
+{
+  "name": ["Elon", "Musk"],
+  "pronouns": {
+    "nomnitive": "he",
+    "accusative": "him",
+    "dative": "his",
+    "genitive": "his"
+  },
+  "downloadDataURL": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQwcZ4z4fqSnAuI3VtZSdQUcXE6Vj3KZD2UKpoNdITp0iLthVPR-kgokxcir4P_nHKzm-QEscRb9VzY/pub?gid=0&single=true&output=tsv",
+  "viewDataURL": "https://docs.google.com/spreadsheets/d/1TZZOwxHeCUla8VZTqyLhAliJDZfDa3xc3S8De5crE6Q/edit?usp=sharing",
+  "suggestionURL": "https://docs.google.com/forms/d/e/1FAIpQLSckk_VZ3d7lECW-2v1mTjUtoYtu2PzS4Gu7_8fwaEFygGXhhA/viewform"
+}

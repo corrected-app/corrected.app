@@ -1,0 +1,12 @@
+{
+  "name": "corrected.app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/corrected-app/corrected.app.git",
+  "author": "Tony Boyles <aaboyles@gmail.com>",
+  "license": "MIT",
+  "private": "false",
+  "dependencies": {
+    "http-server": "^14.1.0"
+  }
+}
