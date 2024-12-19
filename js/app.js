@@ -18,54 +18,6 @@ function makeModel(data) {
   );
 }
 
-function makeScatterplot(data) {
-  let margin = {top: 10, right: 30, bottom: 30, left: 30},
-  height = window.innerHeight - margin.top - margin.bottom - 200,
-  width = height; 
-
-  // append the svg object to the body of the page
-  let svg = d3.select("#scatterplot")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
-
-  let x = d3.scalePow()
-    .exponent(0.5)
-    .domain([0, 1500])
-    .range([ 0, width ]);
-  svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
-
-  // Add Y axis
-  let y = d3.scalePow()
-    .exponent(0.5)
-    .domain([0, 1500])
-    .range([ height, 0]);
-  svg.append("g")
-    .call(d3.axisLeft(y));
-
-  let colorWheel = d3.scaleOrdinal(d3.schemeCategory10).domain(
-    data
-      .map(d => d.Company)
-      .filter((v, i, a) => a.indexOf(v) === i)
-  );
-
-  // Add dots
-  svg.append('g')
-    .selectAll("dot")
-    .data(data)
-    .enter()
-    .append("circle")
-      .attr("cx", d => x(d.PredictionLength))
-      .attr("cy", d => y(d.ActualLength))
-      .attr("r", 5)
-      .style("fill", d => colorWheel(d.Company));
-}
-
 const msToDays = 1000 * 60 * 60 * 24;
 
 let rawTSV = await fetch(config.downloadDataURL).then(d => d.text());
@@ -95,11 +47,21 @@ d3.select("#predicted-by-date").on("change", updatePrediction);
 
 updatePrediction();
 
-makeScatterplot(subset);
-
-let table = new Tabulator("#table", {
-  height: 205,
-  data: data,
-  layout: "fitColumns",
-  autoColumns: true
+let readme = await fetch("README.md").then(d => d.text());
+d3.select("#how").html(marked.parse(readme));
+d3.select("#how-button").on("click", () => d3.select("#how-modal").classed("is-active", true));
+d3.selectAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button').on("click", () => {
+  d3.select("#how-modal").classed("is-active", false);
 });
+document.addEventListener('keydown', e => {
+  if(e.key === "Escape") d3.select("#how-modal").classed("is-active", false);
+});
+
+d3.select("#view-data").attr("href", config.viewDataURL);
+
+d3.select("#download-data").on("click", () => {
+  let blob = new Blob([rawTSV], {type: 'text/tsv;charset=utf-8'});
+  saveAs(blob, 'MuskPredictions.tsv');
+});
+
+d3.select("#suggest").attr("href", config.suggestionURL);

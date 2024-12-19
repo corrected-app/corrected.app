@@ -4,12 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Corrected Musk</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link href="https://unpkg.com/tabulator-tables@5.0.10/dist/css/tabulator.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spin.js/4.1.1/spin.min.css" integrity="sha512-ssYEuK9Epo/48VIlBWTFosf1izrgGZqEMELJP+L7Clh0nvaOSTg87dM+Z8L+KKjrPdMbMvKYOOnzBOkNMhWFsg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.min.css" integrity="sha512-RpeJZX3aH5oZN3U3JhE7Sd+HG8XQsqmP3clIbu4G28p668yNsRNj3zMASKe1ATjl/W80wuEtCx2dFA8xaebG5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
+
   <section class="section">
     <div class="container has-text-centered">
       <h1 class="title">Corrected</h1>
@@ -33,62 +31,28 @@
       </p>
     </div>
   </section>
-  <section class="section is-hidden" id="how">
-    <div class="tabs is-centered">
-      <ul>
-        <li class="is-active"><a>Raw Data</a></li>
-        <li><a>Model</a></li>
-        <li><a>Videos</a></li>
-        <li><a>Documents</a></li>
-      </ul>
+
+  <div class="modal" id="how-modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box" id="how"></div>
     </div>
-    <div class="container is-hidden" id="table-wrapper">
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">From</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <p class="control is-expanded has-icons-left">
-              <input class="input" type="text" placeholder="Name">
-              <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-              </span>
-            </p>
-          </div>
-          <div class="field">
-            <p class="control is-expanded has-icons-left has-icons-right">
-              <input class="input is-success" type="email" placeholder="Email" value="alex@smith.com">
-              <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div id="table"></div>
-    </div>
-    <div class="columns is-hidden" id="scatterplot-wrapper">
-      <div class="column is-one-fifth"></div>
-      <div id="scatterplot" class="column"></div>
-      <div class="column is-one-fifth"></div>
-    </div>
-  </section>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
   <section class="has-text-centered">
     <div class="control">
-      <a class="button is-primary" href="#">View the Raw Data</a>
-      <a class="button is-primary" href="#">Download the Raw Data</a>
-      <a class="button is-primary" href="#">Suggest a Musk Forecast</a>
+      <a id="view-data" class="button is-primary" href="#">View the Raw Data</a>
+      <a id="download-data" class="button is-primary" href="#">Download the Raw Data</a>
+      <a id="suggest" class="button is-primary" href="#">Suggest a Musk Forecast</a>
     </div>
 
-    Built by Tony Boyles &lt;@aaboyles&gt;. Made possible by a microgrant from the <a href="https://forecasting.substack.com/">Forecasting Newsletter</a>.
+    Built by <a href="https://github.com/aaboyles/">Tony Boyles</a>. Made possible by a microgrant from the <a href="https://forecasting.substack.com/">Forecasting Newsletter</a>.
   </section>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/regression/2.0.1/regression.min.js"></script>
-  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.0.10/dist/js/tabulator.min.js"></script>
-  <script src="https://unpkg.com/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/regression/2.0.1/regression.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/15.0.4/marked.min.js" integrity="sha512-VmLxPVdDGeR+F0DzUHVqzHwaR4ZSSh1g/7aYXwKT1PAGVxunOEcysta+4H5Utvmpr2xExEPybZ8q+iM9F1tGdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="js/app.js" type="module"></script>
   </body>
 </html>
